@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.wearosmagnetic">
+
+    <!-- 자기장 센서 사용 명시 -->
+    <uses-feature android:name="android.hardware.sensor.compass" android:required="true"/>
+    <uses-feature android:name="android.hardware.type.watch"/>
+
+    <application
+        android:allowBackup="true"
+        android:theme="@android:style/Theme.DeviceDefault"
+        android:label="WearOS Magnetic"
+        android:supportsRtl="true"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher">
+
+        <meta-data
+            android:name="com.google.android.wearable.standalone"
+            android:value="true"/>
+
+        <activity
+            android:name="com.example.wearosmagnetic.presentation.MainActivity"
+            android:exported="true"
+            android:taskAffinity="com.example.wearosmagnetic"
+            android:launchMode="singleTask">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name="com.example.wearosmagnetic.tile.MainTileService"
+            android:permission="android.permission.BIND_WALLPAPER"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.service.wallpaper.WallpaperService" />
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>
